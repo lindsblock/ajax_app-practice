@@ -6,10 +6,11 @@ class GamesController < ApplicationController
   end
 
   def show
+    render partial: 'game', locals: { game: @game }
   end
 
   def form
-    @game = Game.new
+    @game = params[:id] ? Game.find(params[:id]) : Game.new
     render partial: 'form'
   end
 
